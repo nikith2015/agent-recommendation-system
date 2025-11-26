@@ -1,0 +1,54 @@
+# Cloud Build configuration for deploying Agent Recommendation System
+# This runs entirely in the cloud - no local disk space needed!
+
+steps:
+  # Step 1: Install dependencies
+  - name: 'python:3.10'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "📥 Installing dependencies..."
+        pip install --no-cache-dir \
+          google-adk \
+          google-generativeai \
+          google-cloud-aiplatform \
+          sentence-transformers \
+          pydantic \
+          python-dotenv \
+          pyyaml \
+          numpy \
+          opentelemetry-api \
+          opentelemetry-sdk
+
+  # Step 2: Initialize agent registry
+  - name: 'python:3.10'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "📚 Initializing agent registry..."
+        python src/main.py --init-registry
+
+  # Step 3: Deploy to Agent Engine
+  - name: 'python:3.10'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo "🚀 Deploying to Agent Engine..."
+        python deploy.py \
+          --project-id agent-recommendation-capstone \
+          --location us-central1 \
+          --agent-id agent-recommendation-system \
+          --display-name "Agent Recommendation System"
+
+options:
+  machineType: 'N1_HIGHCPU_8'
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: '1200s'
+
+
+
+

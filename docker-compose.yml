@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  agent-recommendation:
+    build: .
+    container_name: agent-recommendation-system
+    ports:
+      - "${PORT:-5000}:5000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY:-$(openssl rand -hex 32)}
+      - FLASK_DEBUG=${FLASK_DEBUG:-False}
+      - PORT=5000
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-*}
+      - GUNICORN_WORKERS=${GUNICORN_WORKERS:-4}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
