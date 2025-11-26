@@ -180,11 +180,8 @@ pytest tests/
 - Structured logging with configurable levels
 - OpenTelemetry tracing support
 
-## License
-
-[Add your license here]
-
 ## Support
 
 For issues and questions, please open an issue in the repository.
+
 
