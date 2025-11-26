@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Recommendation System - Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🤖 Agent Recommendation System</h1>
+            <p class="subtitle">AI-Powered Agent Discovery and Recommendation</p>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <div class="input-container">
+                <label for="goal-input">Enter Your Goal:</label>
+                <textarea 
+                    id="goal-input" 
+                    placeholder="Example: I need an agent that can summarize email threads..."
+                    rows="3"
+                ></textarea>
+                <div class="input-controls">
+                    <div class="top-k-container">
+                        <label for="top-k-input">Number of Recommendations:</label>
+                        <input type="number" id="top-k-input" value="5" min="1" max="10">
+                    </div>
+                    <button id="recommend-btn" class="btn-primary">Get Recommendations</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress-section" class="progress-section" style="display: none;">
+            <h2>Processing Your Request...</h2>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+                <span id="progress-text" class="progress-text">0%</span>
+            </div>
+            <div id="status-message" class="status-message">Initializing...</div>
+            <div id="steps-container" class="steps-container">
+                <div class="step" id="step-init">
+                    <div class="step-icon">⏳</div>
+                    <div class="step-label">Initialization</div>
+                </div>
+                <div class="step" id="step-goal-spec">
+                    <div class="step-icon">📋</div>
+                    <div class="step-label">Goal Analysis</div>
+                </div>
+                <div class="step" id="step-retrieval">
+                    <div class="step-icon">🔍</div>
+                    <div class="step-label">Agent Search</div>
+                </div>
+                <div class="step" id="step-ranking">
+                    <div class="step-icon">📊</div>
+                    <div class="step-label">Ranking</div>
+                </div>
+                <div class="step" id="step-explanation">
+                    <div class="step-icon">💡</div>
+                    <div class="step-label">Explanation</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" class="results-section" style="display: none;">
+            <h2>Recommendations</h2>
+            
+            <!-- Goal Specification Summary -->
+            <div id="goal-summary" class="goal-summary" style="display: none;">
+                <h3>📋 Goal Analysis</h3>
+                <div id="goal-summary-content"></div>
+            </div>
+
+            <!-- Overall Explanation -->
+            <div id="overall-explanation" class="overall-explanation" style="display: none;">
+                <h3>💡 Overall Explanation</h3>
+                <p id="explanation-text"></p>
+            </div>
+
+            <!-- Recommendations List -->
+            <div id="recommendations-list" class="recommendations-list"></div>
+        </section>
+
+        <!-- Error Section -->
+        <section id="error-section" class="error-section" style="display: none;">
+            <h2>⚠️ Error</h2>
+            <div id="error-message" class="error-message"></div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+# Configuration for Agent Recommendation System
+
+# Gemini API Configuration
+gemini:
+  model: "gemini-1.5-flash"  # Using flash for better availability, can use gemini-1.5-pro if available
+  temperature: 0.7
+  max_tokens: 8192
+
+# Retrieval Configuration
+retrieval:
+  # Hybrid retrieval weights
+  semantic_weight: 0.7
+  keyword_weight: 0.3
+  
+  # Number of candidates to retrieve
+  top_k_candidates: 20
+  
+  # Number of final recommendations
+  top_k_recommendations: 5
+
+# Vector Search Configuration
+vector_search:
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  collection_name: "agent_registry"
+  similarity_threshold: 0.5
+
+# Ranking Configuration
+ranking:
+  # Weights for different factors
+  similarity_weight: 0.4
+  compatibility_weight: 0.3
+  complexity_weight: 0.2
+  dependency_weight: 0.1
+
+# Session Configuration
+session:
+  max_history_length: 50
+  enable_compaction: true
+  compaction_threshold: 30
+
+# Observability Configuration
+observability:
+  enable_tracing: true
+  enable_metrics: true
+  log_level: "INFO"
+
+

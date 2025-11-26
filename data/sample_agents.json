@@ -1,0 +1,250 @@
+{
+  "agents": [
+    {
+      "id": "agent_001",
+      "name": "Email Summarization Agent",
+      "description": "An agent that reads emails and generates concise summaries with key points and action items",
+      "capabilities": ["text_processing", "summarization", "email"],
+      "tools": [
+        {
+          "name": "email_read",
+          "type": "custom",
+          "description": "Read emails from inbox",
+          "required": true
+        },
+        {
+          "name": "text_analysis",
+          "type": "custom",
+          "description": "Analyze and extract key information from text",
+          "required": true
+        }
+      ],
+      "input_format": "Email messages or email IDs",
+      "output_format": "Structured summary with key points, action items, and sentiment",
+      "domain": "productivity",
+      "dependencies": ["email-api", "nlp-library"],
+      "complexity_score": 0.4,
+      "code_lines": 800,
+      "metadata": {
+        "author": "Team Alpha",
+        "version": "1.0",
+        "last_updated": "2025-01-15"
+      }
+    },
+    {
+      "id": "agent_002",
+      "name": "Customer Feedback Analyzer",
+      "description": "Analyzes customer feedback from multiple sources, performs sentiment analysis, and generates reports",
+      "capabilities": ["text_processing", "sentiment_analysis", "data_analysis"],
+      "tools": [
+        {
+          "name": "database_access",
+          "type": "custom",
+          "description": "Access customer feedback database",
+          "required": true
+        },
+        {
+          "name": "sentiment_analyzer",
+          "type": "custom",
+          "description": "Perform sentiment analysis on text",
+          "required": true
+        },
+        {
+          "name": "report_generator",
+          "type": "custom",
+          "description": "Generate analysis reports",
+          "required": false
+        }
+      ],
+      "input_format": "Customer feedback data (CSV, JSON, or database query)",
+      "output_format": "Analysis report with sentiment scores, trends, and recommendations",
+      "domain": "customer_service",
+      "dependencies": ["pandas", "nltk", "database-driver"],
+      "complexity_score": 0.6,
+      "code_lines": 1500,
+      "metadata": {
+        "author": "Team Beta",
+        "version": "2.1",
+        "last_updated": "2025-02-01"
+      }
+    },
+    {
+      "id": "agent_003",
+      "name": "Code Review Assistant",
+      "description": "Reviews code for quality, security issues, and best practices",
+      "capabilities": ["code_execution", "text_processing"],
+      "tools": [
+        {
+          "name": "code_execution",
+          "type": "built-in",
+          "description": "Execute and analyze code",
+          "required": true
+        },
+        {
+          "name": "file_read",
+          "type": "custom",
+          "description": "Read source code files",
+          "required": true
+        }
+      ],
+      "input_format": "Source code files or repository path",
+      "output_format": "Review report with issues, suggestions, and quality scores",
+      "domain": "software_development",
+      "dependencies": ["ast-parser", "security-scanner"],
+      "complexity_score": 0.7,
+      "code_lines": 2500,
+      "metadata": {
+        "author": "Team Gamma",
+        "version": "1.5",
+        "last_updated": "2025-01-20"
+      }
+    },
+    {
+      "id": "agent_004",
+      "name": "Web Research Agent",
+      "description": "Searches the web for information, aggregates results, and provides citations",
+      "capabilities": ["search", "web_scraping", "text_processing"],
+      "tools": [
+        {
+          "name": "google_search",
+          "type": "built-in",
+          "description": "Search the web using Google",
+          "required": true
+        },
+        {
+          "name": "web_scraper",
+          "type": "custom",
+          "description": "Scrape content from web pages",
+          "required": false
+        }
+      ],
+      "input_format": "Research query or topic",
+      "output_format": "Research report with findings, sources, and citations",
+      "domain": "research",
+      "dependencies": ["requests", "beautifulsoup4"],
+      "complexity_score": 0.5,
+      "code_lines": 1200,
+      "metadata": {
+        "author": "Team Delta",
+        "version": "1.2",
+        "last_updated": "2025-01-10"
+      }
+    },
+    {
+      "id": "agent_005",
+      "name": "Data Visualization Agent",
+      "description": "Takes data and creates appropriate visualizations with charts and graphs",
+      "capabilities": ["data_analysis", "image_processing"],
+      "tools": [
+        {
+          "name": "database_access",
+          "type": "custom",
+          "description": "Access data sources",
+          "required": true
+        },
+        {
+          "name": "chart_generator",
+          "type": "custom",
+          "description": "Generate charts and graphs",
+          "required": true
+        }
+      ],
+      "input_format": "Data (CSV, JSON, or database connection)",
+      "output_format": "Visualization images (PNG, SVG) or interactive charts",
+      "domain": "data_science",
+      "dependencies": ["matplotlib", "pandas", "plotly"],
+      "complexity_score": 0.5,
+      "code_lines": 1000,
+      "metadata": {
+        "author": "Team Epsilon",
+        "version": "1.0",
+        "last_updated": "2025-01-05"
+      }
+    },
+    {
+      "id": "agent_006",
+      "name": "Translation Agent",
+      "description": "Translates text between multiple languages with context awareness",
+      "capabilities": ["translation", "text_processing"],
+      "tools": [
+        {
+          "name": "translation_api",
+          "type": "OpenAPI",
+          "description": "Access translation service",
+          "required": true
+        }
+      ],
+      "input_format": "Text in source language",
+      "output_format": "Translated text in target language",
+      "domain": "communication",
+      "dependencies": ["translation-service-api"],
+      "complexity_score": 0.3,
+      "code_lines": 600,
+      "metadata": {
+        "author": "Team Zeta",
+        "version": "1.0",
+        "last_updated": "2025-01-12"
+      }
+    },
+    {
+      "id": "agent_007",
+      "name": "Calendar Scheduler Agent",
+      "description": "Manages calendar events, schedules meetings, and finds available time slots",
+      "capabilities": ["calendar", "api_integration"],
+      "tools": [
+        {
+          "name": "calendar_api",
+          "type": "OpenAPI",
+          "description": "Access calendar service",
+          "required": true
+        }
+      ],
+      "input_format": "Meeting requests or scheduling queries",
+      "output_format": "Scheduled events or available time slots",
+      "domain": "productivity",
+      "dependencies": ["calendar-api-client"],
+      "complexity_score": 0.4,
+      "code_lines": 900,
+      "metadata": {
+        "author": "Team Eta",
+        "version": "1.1",
+        "last_updated": "2025-01-18"
+      }
+    },
+    {
+      "id": "agent_008",
+      "name": "Document Analyzer Agent",
+      "description": "Analyzes documents (PDF, Word, etc.), extracts key information, and generates summaries",
+      "capabilities": ["text_processing", "file_operations", "summarization"],
+      "tools": [
+        {
+          "name": "file_read",
+          "type": "custom",
+          "description": "Read document files",
+          "required": true
+        },
+        {
+          "name": "pdf_parser",
+          "type": "custom",
+          "description": "Parse PDF documents",
+          "required": false
+        }
+      ],
+      "input_format": "Document files (PDF, DOCX, TXT)",
+      "output_format": "Extracted information and summary",
+      "domain": "document_management",
+      "dependencies": ["pdfplumber", "python-docx"],
+      "complexity_score": 0.6,
+      "code_lines": 1800,
+      "metadata": {
+        "author": "Team Theta",
+        "version": "2.0",
+        "last_updated": "2025-01-25"
+      }
+    }
+  ]
+}
+
+
+
+
